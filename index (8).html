@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prince Chinyama | Data Analyst</title>
+<meta name="description" content="Portfolio of Prince Chinyama, Data Analyst and MS Business Analytics graduate, University of New Hampshire.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0A0D13;
+    --bg-raised: #11151E;
+    --bg-raised-2: #161B26;
+    --ink: #F2F4F8;
+    --muted: #9BA3B5;
+    --muted-dim: #6B7488;
+    --line: #232838;
+    --line-soft: #1B202E;
+    --accent: #6E7CF2;
+    --accent-dim: #4A52A8;
+    --accent-soft: rgba(110,124,242,0.12);
+    --accent-ink: #9DA6FF;
+    --amber: #E9B949;
+    --violet: #7FE0B8;
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --max: 880px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+
+  body{
+    margin:0;
+    background:
+      linear-gradient(var(--line-soft) 1px, transparent 1px) 0 0 / 100% 44px,
+      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px) 0 0 / 44px 100%,
+      var(--bg);
+    background-attachment: fixed, fixed, fixed;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; }
+
+  ::selection{ background: var(--accent-soft); color: var(--accent-ink); }
+
+  ::-webkit-scrollbar{ width: 10px; }
+  ::-webkit-scrollbar-track{ background: var(--bg); }
+  ::-webkit-scrollbar-thumb{ background: var(--line); border-radius: 6px; }
+  ::-webkit-scrollbar-thumb:hover{ background: var(--muted-dim); }
+
+  .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- Nav ---------- */
+  header.site{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(10,13,19,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height: 60px;
+  }
+  .logo{
+    font-family: var(--mono); font-size: 14px; font-weight: 500;
+    letter-spacing: 0.02em; text-decoration:none; color: var(--ink);
+    display:flex; align-items:center; gap:9px;
+  }
+  .logo .dot{
+    width:8px; height:8px; border-radius:50%; background: var(--accent); display:inline-block;
+    box-shadow: 0 0 8px var(--accent);
+  }
+  .navlinks{ display:flex; align-items:center; gap: 28px; list-style:none; margin:0; padding:0; }
+  .navlinks a{
+    text-decoration:none; font-size: 13.5px; color: var(--muted); font-weight:500;
+    font-family: var(--mono);
+    transition: color .15s ease;
+  }
+  .navlinks a:hover, .navlinks a:focus-visible{ color: var(--accent-ink); }
+  .navlinks a:focus-visible{ outline: 2px solid var(--accent); outline-offset: 4px; border-radius:2px; }
+  .resume-btn{
+    font-family: var(--mono); font-size: 13px; font-weight:500;
+    background: var(--accent); color: #061412;
+    padding: 8px 14px; border-radius: 3px; text-decoration:none;
+    transition: background .15s ease, transform .15s ease;
+  }
+  .resume-btn:hover{ background: var(--accent-ink); transform: translateY(-1px); }
+  .navtoggle{ display:none; background:none; border:none; cursor:pointer; padding:8px; }
+  .navtoggle span{ display:block; width:20px; height:2px; background:var(--ink); margin:4px 0; }
+
+  @media (max-width: 720px){
+    .navlinks{
+      position:absolute; top:60px; left:0; right:0;
+      background: var(--bg-raised); border-bottom:1px solid var(--line);
+      flex-direction:column; align-items:flex-start; gap:0;
+      padding: 8px 28px 20px; display:none;
+    }
+    .navlinks.open{ display:flex; }
+    .navlinks li{ width:100%; padding: 10px 0; border-bottom:1px solid var(--line); }
+    .navlinks li:last-child{ border-bottom:none; }
+    .navtoggle{ display:block; }
+    .navtoggle span{ background: var(--ink); }
+    .resume-btn{ display:none; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding: 88px 0 64px; }
+  .eyebrow{
+    font-family: var(--mono); font-size: 13px; color: var(--accent-ink);
+    background: var(--accent-soft); border: 1px solid var(--accent-dim);
+    display:inline-block; padding: 5px 12px; border-radius: 3px; margin-bottom: 26px;
+  }
+  h1.headline{
+    font-family: var(--mono); font-weight: 600;
+    font-size: clamp(32px, 5.2vw, 50px);
+    line-height: 1.15; letter-spacing: -0.01em;
+    margin: 0 0 20px; color: var(--ink);
+  }
+  .cursor{
+    display:inline-block; width: 0.5ch; background: var(--accent); margin-left: 4px;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink{ 50%{ opacity: 0; } }
+  .hero .lede{
+    font-size: 17px; color: var(--muted); max-width: 54ch; margin: 0 0 32px;
+  }
+  .hero-cta{ display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+  .btn-primary{
+    font-family: var(--mono); font-size: 14px; font-weight:500;
+    background: var(--accent); color: #061412; text-decoration:none;
+    padding: 12px 20px; border-radius: 3px; transition: background .15s ease, transform .15s ease;
+  }
+  .btn-primary:hover{ background: var(--accent-ink); transform: translateY(-1px); }
+  .btn-secondary{
+    font-family: var(--mono); font-size: 14px; font-weight:500;
+    color: var(--ink); text-decoration:none;
+    padding: 12px 20px; border-radius: 3px; border: 1px solid var(--line);
+    transition: border-color .15s ease, color .15s ease;
+  }
+  .btn-secondary:hover{ border-color: var(--accent); color: var(--accent-ink); }
+
+  .stat-row{
+    display:grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    margin-top: 56px; border: 1px solid var(--line); border-radius: 6px; overflow:hidden;
+    background: var(--bg-raised);
+  }
+  .stat{ padding: 20px 18px; border-right: 1px solid var(--line); }
+  .stat:last-child{ border-right:none; }
+  .stat .num{ font-family: var(--mono); font-size: 24px; color: var(--accent-ink); font-weight:500; }
+  .stat .label{ font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  @media (max-width: 640px){
+    .stat-row{ grid-template-columns: repeat(2, 1fr); }
+    .stat:nth-child(2){ border-right:none; }
+    .stat:nth-child(1), .stat:nth-child(2){ border-bottom: 1px solid var(--line); }
+  }
+
+  /* ---------- Section shell ---------- */
+  section{ padding: 72px 0; border-top: 1px solid var(--line); }
+  .section-head{ margin-bottom: 38px; }
+  .section-tag{
+    font-family: var(--mono); font-size: 12.5px; color: var(--accent-ink);
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; display:block;
+  }
+  h2.section-title{
+    font-family: var(--sans); font-size: clamp(23px, 3vw, 28px);
+    font-weight:700; margin: 0; letter-spacing:-0.01em; color: var(--ink);
+  }
+
+  /* ---------- About ---------- */
+  .about-body p{ font-size: 17px; color: #D6DAE6; max-width: 66ch; }
+  .about-body p + p{ margin-top: 16px; }
+  .about-body .muted-note{
+    color: var(--accent-ink); font-size: 13.5px; margin-top: 20px; font-family: var(--mono);
+  }
+
+  /* ---------- Experience ---------- */
+  .timeline{ display:flex; flex-direction:column; }
+  .role{
+    display:grid; grid-template-columns: 150px 1fr; gap: 24px;
+    padding: 24px 20px; border-left: 2px solid var(--line);
+    margin-bottom: 4px; position: relative;
+    transition: border-color .15s ease;
+  }
+  .role::before{
+    content: ""; position:absolute; left:-5px; top: 30px;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--accent-dim);
+  }
+  .role:hover{ border-left-color: var(--accent); background: var(--bg-raised); }
+  .role:hover::before{ border-color: var(--accent); }
+  .role .when{ font-family: var(--mono); font-size: 12.5px; color: var(--accent-ink); padding-top: 3px; }
+  .role h3{ font-size: 17px; margin: 0 0 2px; font-weight:600; color: var(--ink); }
+  .role .org{ font-size: 13.5px; color: var(--muted); margin-bottom: 12px; font-family: var(--mono); }
+  .role ul{ margin: 0; padding-left: 18px; color: #B7BDCC; font-size: 15px; }
+  .role li + li{ margin-top: 7px; }
+  .role li::marker{ color: var(--accent-dim); }
+  @media (max-width: 640px){
+    .role{ grid-template-columns: 1fr; gap: 6px; padding: 20px 16px; }
+  }
+
+  /* ---------- Projects ---------- */
+  .project-grid{ display:grid; grid-template-columns: 1fr; gap: 16px; }
+  .project{
+    background: var(--bg-raised); border: 1px solid var(--line); border-left: 2px solid var(--line);
+    border-radius: 6px; padding: 24px 26px 26px; position: relative;
+    transition: border-color .15s ease, transform .15s ease, background .15s ease;
+  }
+  .project:hover{ border-color: var(--accent-dim); border-left-color: var(--accent); background: var(--bg-raised-2); }
+  .project-index{
+    font-family: var(--mono); font-size: 11px; color: var(--muted-dim);
+    letter-spacing: 0.08em; margin-bottom: 10px; display:block;
+  }
+  .project-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; }
+  .project h3{ font-size: 17.5px; margin: 0 0 4px; font-weight:600; font-family: var(--sans); color: var(--ink); }
+  .project .subtitle{ font-size: 13.5px; color: var(--muted); margin-bottom: 14px; }
+  .metric-tag{
+    font-family: var(--mono); font-size: 12px; color: var(--accent-ink);
+    background: var(--accent-soft); border: 1px solid var(--accent-dim);
+    padding: 5px 10px; border-radius: 3px;
+    white-space: nowrap; flex-shrink:0;
+  }
+  .project p.desc{ font-size: 15px; color: #B7BDCC; margin: 12px 0 16px; max-width: 66ch; line-height: 1.65; }
+  .tagrow{ display:flex; flex-wrap:wrap; gap: 8px; }
+  .tagrow span{
+    font-family: var(--mono); font-size: 11.5px; color: var(--muted);
+    border: 1px solid var(--line); padding: 3px 9px; border-radius: 3px;
+    background: var(--bg);
+  }
+
+  /* ---------- Project evidence ---------- */
+  .project-actions{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+  .project-link, .details-toggle{
+    font-family:var(--mono); font-size:12px; color:var(--accent-ink);
+    background:transparent; border:1px solid var(--accent-dim); padding:7px 11px;
+    border-radius:3px; text-decoration:none; cursor:pointer;
+  }
+  .project-link:hover, .details-toggle:hover{ background:var(--accent-soft); }
+  .project-details{ display:none; margin-top:18px; padding-top:16px; border-top:1px solid var(--line); }
+  .project-details.open{ display:block; }
+  .project-details h4{ font-family:var(--mono); font-size:12px; color:var(--accent-ink); margin:0 0 7px; text-transform:uppercase; letter-spacing:.05em; }
+  .project-details p{ font-size:13.5px; color:#A6ADC0; margin:0 0 13px; }
+  .evidence-note{ font-size:12px; color:var(--muted); font-family:var(--mono); margin-top:12px; }
+
+  /* ---------- Skills ---------- */
+  .skill-cols{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 6px; overflow:hidden; }
+  .skill-col{ background: var(--bg-raised); padding: 22px 24px; }
+  .skill-col .cat{
+    font-family: var(--mono); font-size: 12px; color: var(--accent-ink);
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px; display:block;
+  }
+  .skill-col:nth-child(2) .cat{ color: var(--amber); }
+  .skill-col:nth-child(3) .cat{ color: var(--violet); }
+  .skill-col ul{ list-style:none; margin:0; padding:0; }
+  .skill-col li{
+    font-size: 14px; padding: 8px 0; border-bottom: 1px solid var(--line-soft); color: #C7CCDA;
+    font-family: var(--mono);
+  }
+  .skill-col li:last-child{ border-bottom:none; }
+  @media (max-width: 720px){
+    .skill-cols{ grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Contact / Footer ---------- */
+  .contact-block{ display:flex; flex-wrap:wrap; gap: 40px; align-items:flex-start; justify-content:space-between; }
+  .contact-block h2.section-title{ max-width: 18ch; margin-bottom: 16px; }
+  .contact-links{ display:flex; flex-direction:column; gap: 12px; font-family: var(--mono); }
+  .contact-links a{
+    text-decoration:none; font-size: 15px; font-weight:500; color: var(--ink);
+    display:inline-flex; align-items:center; gap:8px;
+    border-bottom: 1px solid transparent; padding-bottom:2px;
+    transition: border-color .15s ease, color .15s ease;
+  }
+  .contact-links a:hover{ border-color: var(--accent); color: var(--accent-ink); }
+
+  footer{
+    border-top: 1px solid var(--line); padding: 26px 0; margin-top: 0;
+  }
+  footer .wrap{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; }
+  footer p{ margin:0; font-size: 12.5px; color: var(--muted-dim); font-family: var(--mono); }
+
+  /* fade-in on scroll */
+  .reveal{ opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
+  .reveal.in{ opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <nav class="wrap">
+    <a href="#top" class="logo"><span class="dot"></span>Prince Chinyama</a>
+    <button class="navtoggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="navlinks" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="resume-btn" href="Prince_Chinyama_Resume.pdf" download>Resume ↓</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero wrap" style="border-top:none; padding-top:56px;">
+    <span class="eyebrow">MS Business Analytics · University of New Hampshire</span>
+    <h1 class="headline">Data Analyst</h1>
+    <p class="lede">I clean up messy datasets and build the SQL and Power BI reporting that people actually use. Worked across six-plus operational areas for clients in the US and South Africa. Open to relocation.</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="#projects">View projects</a>
+      <a class="btn-secondary" href="#contact">Get in touch</a>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat"><div class="num" data-target="9">0</div><div class="label">Analytics projects completed</div></div>
+      <div class="stat"><div class="num" data-target="4">0</div><div class="label">Core analytics tools</div></div>
+      <div class="stat"><div class="num" data-target="6">0</div><div class="label">Operational domains reported on</div></div>
+      <div class="stat"><div class="num" data-target="3.91" data-decimal="true">0.00</div><div class="label">Graduate GPA</div></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">About</span>
+        <h2 class="section-title">Background</h2>
+      </div>
+      <div class="about-body reveal">
+        <p>I'm Prince Chinyama, an MS Business Analytics graduate from UNH's Paul College. Before grad school I spent a few years doing this for a living: I started as a research assistant cleaning survey data for faculty at Walter Sisulu University, then moved into data analyst roles supporting operations and logistics teams, first in South Africa and now in the US.</p>
+        <p>Most of my job is fixing data that isn't ready to be looked at yet, then building the SQL and Power BI reports people check every week. I hold a Bachelor's in Information Systems and Mathematical Statistics from Rhodes University in South Africa, and grew up in Zimbabwe.</p>
+        <p class="muted-note">Open to relocation anywhere in the US.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">Experience</span>
+        <h2 class="section-title">Where I've worked</h2>
+      </div>
+      <div class="timeline reveal">
+        <div class="role">
+          <div class="when">Nov 2025 – Apr 2026</div>
+          <div>
+            <h3>Data Analyst Intern</h3>
+            <div class="org">Xcelerate Enterprises · Remote, USA</div>
+            <ul>
+              <li>Analyzed operational, project, quality, logistics, asset-utilization, and customer data across six business areas to surface recurring performance issues and support client recommendations.</li>
+              <li>Built Power BI dashboards and SQL reporting for executive updates, issue tracking, budget monitoring, and forecasting; automated recurring data prep with Excel Power Query.</li>
+              <li>Worked directly with clients and internal teams to nail down what they needed reported, chased down discrepancies in the data, and explained the findings in plain language.</li>
+              <li>Ran structured QA and AI-assisted validation to catch missing values, duplicates, and inconsistent fields before analysis went client-facing.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="role">
+          <div class="when">Oct 2024 – Jun 2025</div>
+          <div>
+            <h3>Junior Data Analyst</h3>
+            <div class="org">P2B Projects · Johannesburg, South Africa</div>
+            <ul>
+              <li>Built analysis-ready reporting datasets across six operational domains using SQL and Excel Power Query: project, inspection, equipment, logistics, delivery, and customer records.</li>
+              <li>Developed Power BI, Excel, and SQL reports tracking project status, budgets, logistics, open issues, quality trends, and forecasts.</li>
+              <li>Ran trend and root-cause analysis across quality, delivery, and cost to flag recurring issues and process-improvement opportunities.</li>
+              <li>Standardized KPI definitions and documented reporting workflows to keep outputs consistent across teams.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="role">
+          <div class="when">Sep 2020 – Mar 2022</div>
+          <div>
+            <h3>Data Analytics Research Assistant</h3>
+            <div class="org">Walter Sisulu University · East London, South Africa</div>
+            <ul>
+              <li>Prepared multi-cycle survey datasets for statistical analysis, resolving missing values, inconsistent responses, and formatting errors.</li>
+              <li>Maintained reproducible QA documentation supporting faculty research and reporting.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">Projects</span>
+        <h2 class="section-title">MSBA coursework &amp; independent analysis</h2>
+      </div>
+      <div class="project-grid reveal">
+
+        <div class="project">
+          <div class="project-top">
+            <div><h3>Women's Tennis Analytics</h3><div class="subtitle">Relational database design → SQL analytics on WTA match history</div></div>
+            <span class="metric-tag">Ages 24–26 = peak</span>
+          </div>
+          <p class="desc">Designed a normalized six-table AWS Aurora database to hold multi-year WTA match data, then wrote the SQL joins, aggregations, and views needed to answer a simple question: at what age do women's pros actually peak? The analysis pointed to 24–26 as the strongest performance window, with younger players producing more upsets and veterans holding the edge on serve statistics.</p>
+          <div class="tagrow"><span>SQL</span><span>AWS Aurora</span><span>R</span><span>ERD</span></div>
+          <div class="project-actions"><button class="details-toggle" type="button" aria-expanded="false">View project details</button></div>
+          <div class="project-details">
+            <h4>6-table relational database</h4>
+            <p>Multi-year WTA match history stored in a normalized AWS Aurora schema. Analysis used joins, aggregations, views, and statistical comparisons to examine age-related performance patterns.</p>
+            <p class="evidence-note">Add later: ERD image, selected SQL queries, charts, and GitHub repository.</p>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="project-top">
+            <div><h3>Diabetes Risk Classification</h3><div class="subtitle">Model comparison on 253K CDC survey records</div></div>
+            <span class="metric-tag">0.79 AUC</span>
+          </div>
+          <p class="desc">Built and evaluated five classification models on CDC BRFSS survey data to flag at-risk individuals from self-reported indicators alone. The best-accuracy model wasn't the right pick clinically: it missed too many actual at-risk cases, so we selected Random Forest at a tuned threshold instead, trading some precision for the recall a screening tool needs.</p>
+          <div class="tagrow"><span>R</span><span>Random Forest</span><span>Logistic Regression</span><span>Threshold tuning</span></div>
+          <div class="project-actions"><button class="details-toggle" type="button" aria-expanded="false">View project details</button></div>
+          <div class="project-details">
+            <h4>253K records · 5 models</h4>
+            <p>Compared five classifiers on CDC BRFSS data and evaluated model choice around screening needs rather than accuracy alone. Random Forest was selected after threshold tuning to improve recall.</p>
+            <p class="evidence-note">Add later: model comparison table, ROC curve, notebook/code, and final report.</p>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="project-top">
+            <div><h3>Content Strategy Analytics</h3><div class="subtitle">Sentiment &amp; regression across 1.4M+ critic reviews</div></div>
+            <span class="metric-tag">1.4M+ reviews</span>
+          </div>
+          <p class="desc">Cleaned and integrated over 1.4 million critic reviews, applied sentiment analysis and regression modeling, and produced a set of business-focused visualizations that turned content-performance patterns into concrete strategic recommendations for a media client.</p>
+          <div class="tagrow"><span>R</span><span>NLP</span><span>Regression</span><span>Visualization</span></div>
+          <div class="project-actions"><button class="details-toggle" type="button" aria-expanded="false">View project details</button></div>
+          <div class="project-details">
+            <h4>1.4M+ reviews</h4>
+            <p>Integrated a large review corpus, applied sentiment analysis and regression, and translated the outputs into business-focused recommendations.</p>
+            <p class="evidence-note">Add later: cleaned workflow, key charts, regression output, and R scripts.</p>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="project-top">
+            <div><h3>Paris Airbnb Investment Model</h3><div class="subtitle">Predictive modeling + causal inference for an investor recommendation</div></div>
+            <span class="metric-tag">AUC 0.861</span>
+          </div>
+          <p class="desc">Looked at thousands of Paris listings to build a recommendation for investors, pairing a gradient-boosted model with propensity score matching to separate what actually drives more bookings from what just correlates with them. Almost all the predictive lift came from feature engineering, not the choice of model. The causal side showed flexible cancellation policies beat host-status by a wide margin.</p>
+          <div class="tagrow"><span>Python</span><span>XGBoost</span><span>LightGBM</span><span>Propensity Score Matching</span></div>
+          <div class="project-actions"><button class="details-toggle" type="button" aria-expanded="false">View project details</button></div>
+          <div class="project-details">
+            <h4>Predictive + causal analysis</h4>
+            <p>Combined boosted-tree prediction with propensity score matching to distinguish predictive signals from factors with stronger causal evidence.</p>
+            <p class="evidence-note">Add later: feature-importance chart, matching diagnostics, notebook, and investor recommendation.</p>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="project-top">
+            <div><h3>NBA Expansion Optimization</h3><div class="subtitle">Integer programming across 15 candidate city pairings</div></div>
+            <span class="metric-tag">15 pairings modeled</span>
+          </div>
+          <p class="desc">Modeled every realistic two-city pairing for a hypothetical NBA expansion to 32 teams, using integer linear programming to minimize travel and a bargaining model to balance travel against revenue. Validated a schedule-invariant travel proxy against over a decade of real NBA travel data, and found that optimizing for travel alone versus travel-plus-revenue pointed to different, but overlapping, winning markets.</p>
+          <div class="tagrow"><span>Integer Programming</span><span>Nash Bargaining</span><span>ANOVA</span><span>R</span></div>
+          <div class="project-actions"><button class="details-toggle" type="button" aria-expanded="false">View project details</button></div>
+          <div class="project-details">
+            <h4>15 city pairings</h4>
+            <p>Used integer programming and a bargaining framework to compare travel efficiency with revenue tradeoffs across candidate expansion markets.</p>
+            <p class="evidence-note">Add later: optimization model, assumptions table, travel validation chart, and report.</p>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="project-top">
+            <div><h3>Airline Tweet Sentiment</h3><div class="subtitle">NLP pipeline for customer-service routing</div></div>
+            <span class="metric-tag">14.6K tweets</span>
+          </div>
+          <p class="desc">Built an end-to-end classifier on airline customer tweets, designed around the reality that missing one viral complaint costs far more than a false alarm. Compared TF-IDF and bag-of-words feature sets, tuned a gradient-boosted classifier toward recall over accuracy, and used topic modeling to split complaints into operational themes teams could route directly.</p>
+          <div class="tagrow"><span>Python</span><span>TF-IDF</span><span>XGBoost</span><span>LDA</span></div>
+          <div class="project-actions"><button class="details-toggle" type="button" aria-expanded="false">View project details</button></div>
+          <div class="project-details">
+            <h4>14.6K tweets</h4>
+            <p>Built an NLP classification workflow focused on recall for negative customer-service events and used topic modeling to make complaint categories operationally useful.</p>
+            <p class="evidence-note">Add later: confusion matrix, topic output, notebook, and sample routing logic.</p>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="project-top">
+            <div><h3>Supply Chain Cost Optimization</h3><div class="subtitle">Linear program across a 19-plant, 10-port network</div></div>
+            <span class="metric-tag">190 variables</span>
+          </div>
+          <p class="desc">Built a linear program to minimize total landed cost across a 19-plant, 10-port distribution network. Shadow price analysis revealed the network's real bottleneck wasn't production capacity but port throughput, meaning the highest-ROI investment was expanding the most-constrained port, not the cheapest plant, which a cost-only view would have missed entirely.</p>
+          <div class="tagrow"><span>Excel Solver</span><span>Linear Programming</span><span>Sensitivity Analysis</span></div>
+          <div class="project-actions"><button class="details-toggle" type="button" aria-expanded="false">View project details</button></div>
+          <div class="project-details">
+            <h4>190 decision variables</h4>
+            <p>Modeled plant-to-port flows with linear programming and used sensitivity analysis to identify port throughput as the key network constraint.</p>
+            <p class="evidence-note">Add later: Solver model, sensitivity report, network diagram, and recommendation summary.</p>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="project-top">
+            <div><h3>Monetary Policy Dynamics</h3><div class="subtitle">Vector autoregression on 70 years of Fed, inflation &amp; unemployment data</div></div>
+            <span class="metric-tag">752 months</span>
+          </div>
+          <p class="desc">Modeled the feedback loop between the Federal Funds Rate, unemployment, and inflation using vector autoregression on decades of monthly data. Granger causality testing confirmed the expected monetary transmission channels, and variance decomposition showed inflation is the variable most driven by external shocks rather than its own history.</p>
+          <div class="tagrow"><span>Python</span><span>R</span><span>VAR</span><span>Granger Causality</span></div>
+          <div class="project-actions"><button class="details-toggle" type="button" aria-expanded="false">View project details</button></div>
+          <div class="project-details">
+            <h4>752 monthly observations</h4>
+            <p>Modeled interactions among the Federal Funds Rate, unemployment, and inflation using VAR, Granger causality, and variance decomposition.</p>
+            <p class="evidence-note">Add later: impulse-response plots, causality results, code, and report.</p>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="project-top">
+            <div><h3>Ride-Hailing Review Comparison</h3><div class="subtitle">Sentiment &amp; topic modeling across 1.7M rider reviews</div></div>
+            <span class="metric-tag">1.7M reviews</span>
+          </div>
+          <p class="desc">Compared two major ride-hailing platforms using 1.7 million rider reviews, going beyond star ratings to lexicon-based sentiment scoring and topic modeling. Driver quality emerged as the single largest shared pain point across both platforms, and a regression controlling for review length and sentiment confirmed the platform gap held up even after accounting for how people wrote their reviews.</p>
+          <div class="tagrow"><span>Python</span><span>R</span><span>Sentiment Analysis</span><span>LDA</span></div>
+          <div class="project-actions"><button class="details-toggle" type="button" aria-expanded="false">View project details</button></div>
+          <div class="project-details">
+            <h4>1.7M reviews</h4>
+            <p>Compared platforms using sentiment scoring, topic modeling, and regression to test whether platform differences persisted after controlling for review characteristics.</p>
+            <p class="evidence-note">Add later: sentiment distributions, topic charts, regression table, and code.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">Skills</span>
+        <h2 class="section-title">Tools I work in</h2>
+      </div>
+      <div class="skill-cols reveal">
+        <div class="skill-col">
+          <span class="cat">Data &amp; BI</span>
+          <ul>
+            <li>SQL</li>
+            <li>Power BI</li>
+            <li>Tableau</li>
+            <li>Excel &amp; Power Query</li>
+            <li>Dashboard development</li>
+            <li>ETL &amp; reporting automation</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <span class="cat">Programming &amp; Analytics</span>
+          <ul>
+            <li>Python (pandas, NumPy, scikit-learn)</li>
+            <li>R</li>
+            <li>MySQL / AWS Aurora</li>
+            <li>Statistical analysis</li>
+            <li>Forecasting</li>
+            <li>Root-cause analysis</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <span class="cat">Business &amp; Delivery</span>
+          <ul>
+            <li>Requirements gathering</li>
+            <li>UAT</li>
+            <li>Stakeholder reporting</li>
+            <li>Data validation &amp; QA</li>
+            <li>Process documentation</li>
+            <li>Management recommendations</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-block">
+        <div>
+          <span class="section-tag">Contact</span>
+          <h2 class="section-title">Let's talk</h2>
+          <p style="color:var(--muted); font-size:14.5px; max-width:40ch;">Open to entry-level data analyst roles across the US. Reach out directly. I usually reply within a day.</p>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:princecyama@gmail.com">princecyama@gmail.com</a>
+          <a href="https://www.linkedin.com/in/princechinyama/" target="_blank" rel="noopener">linkedin.com/in/Prince-Chinyama</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Prince Chinyama · MS Business Analytics, UNH · 2026</p>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Animated stat counters
+  function animateCount(el){
+    const target = parseFloat(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const isDecimal = el.dataset.decimal === 'true';
+    const duration = 900;
+    const start = performance.now();
+    function tick(now){
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const val = target * eased;
+      el.textContent = (isDecimal ? val.toFixed(2) : Math.round(val)) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const statEls = document.querySelectorAll('.stat .num');
+  if ('IntersectionObserver' in window){
+    const statIo = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting){
+          animateCount(entry.target);
+          statIo.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    statEls.forEach(el => statIo.observe(el));
+  } else {
+    statEls.forEach(el => { el.textContent = el.dataset.target + (el.dataset.suffix || ''); });
+  }
+
+  // Expandable project evidence
+  document.querySelectorAll('.details-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const details = btn.closest('.project').querySelector('.project-details');
+      const open = details.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.textContent = open ? 'Hide project details' : 'View project details';
+    });
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
